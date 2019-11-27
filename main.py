@@ -11,19 +11,15 @@ class BaseModel(Model):
         database = db
 
 
-class Frontcard(BaseModel):
+class Card(BaseModel):
     question = CharField()
-
-
-class Backcard(BaseModel):
-
     answer = CharField()
 
 
-class Menu(BaseModel):
+def Menu():
     a = input("C:Create\nR:Read\n")
     if a == 'C':
-        question = Frontcard(question=input("NEW QUESTION for your card \n"))
+        question = Card(question=input("NEW QUESTION for your card \n"))
         question.save()
         print(f"{question.question}")
 
@@ -33,9 +29,5 @@ class Menu(BaseModel):
 
 db.connect()
 
-db.drop_tables([Frontcard])
-db.create_tables([Frontcard])
-db.drop_tables([Backcard])
-db.create_tables([Backcard])
-db.drop_tables([Menu])
-db.create_tables([Menu])
+db.create_tables([Card])
+db.drop_tables([Card])
