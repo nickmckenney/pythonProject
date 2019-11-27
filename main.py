@@ -17,26 +17,38 @@ class Card(BaseModel):
     answer = CharField()
 
 
-class Menu:
-    def __init__(self):
-        a = input("C:Create\nP: Play\n")
-        if(a == 'P'):
-            game()
-        if a == 'C':
-            question = question = input("NEW QUESTION for your card \n")
-            answer = answer = input("NEW answer for your card \n")
-            card = Card(question=question, answer=answer)
-            card.save()
-            print(f"{card.question} and {card.answer}")
-            question = input("Do you want to add more:y/n ")
-            if question == 'y':
-                # menu()
-                print("x")
+def menu():
+    a = input("C:Create\nV: View\n G: Game\n")
+    if(a == 'V'):
+        viewAllCards()
+    if a == 'G':
+        game()
+    if a == 'C':
+
+        question = input("NEW QUESTION for your card \n")
+        answer = input("NEW answer for your card \n")
+        card = Card(question=question, answer=answer)
+        card.save()
+        print(f"{card.question} and {card.answer}")
+        question = input("Do you want to add more:y/n ")
+        if question == 'y':
+            menu()
+
+
+def viewAllCards():
+    for card in Card.select():
+        print("QUESTION "+card.question+" ANSWER "+card.answer)
 
 
 def game():
-    print("Welcome to the game")
+    gameQuestion = []
+    gameAnswer = []
+    for card in Card.select():
+        gameQuestion.append(card.question)
+        gameAnswer.append(card.answer)
+    print(f"{gameQuestion} fjfjfjfjfj  {gameAnswer}")
+    for card in Card.select():
 
 
 db.create_tables([Card])
-# menu()
+menu()
