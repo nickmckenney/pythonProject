@@ -41,13 +41,21 @@ def viewAllCards():
 
 
 def game():
-    gameQuestion = []
-    gameAnswer = []
+    # gameQuestion = []
+    # gameAnswer = []
+    # for card in Card.select():
+    #     gameQuestion.append(card.question)
+    #     gameAnswer.append(card.answer)
+    # print(f"{gameQuestion}  and  {gameAnswer}")
+    correct = 0
+    incorrect = 0
     for card in Card.select():
-        gameQuestion.append(card.question)
-        gameAnswer.append(card.answer)
-    print(f"{gameQuestion} fjfjfjfjfj  {gameAnswer}")
-    for card in Card.select():
+        if input(f"{card.question}\n") == card.answer:
+            print("YOU are NOT DUMB")
+            correct += 1
+        else:
+            print("YOUR DUMB")
+            incorrect += 1
 
 
 db.create_tables([Card])
