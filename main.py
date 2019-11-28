@@ -51,6 +51,8 @@ def game():
         else:
             incorrect += 1
             print(f"Amount of incorrect: {incorrect}")
+            if input("do you want to see the back y/n") == 'y':
+                print(f"answer is {card.answer}")
 
 
 db.create_tables([Card])
