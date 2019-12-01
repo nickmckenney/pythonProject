@@ -1,26 +1,13 @@
 from peewee import *
 from datetime import date
-# from tkinter import *
-# import tkinter as tk
-# import PySimpleGUI as sg
+# import tkinter
+# tk = tkinter.Tk()
+# canvas = tkinter.Canvas(tk, width=500, height=500)
+# canvas.pack()
 
-# sg.change_look_and_feel('DarkAmber')  # Add a touch of color
-# # All the stuff inside your window.
-# layout = [[sg.Text('Some text on Row 1')],
-#           [sg.Text('Enter something on Row 2'), sg.InputText()],
-#           [sg.Button('Ok'), sg.Button('Cancel')]]
-
-# # Create the Window
-# window = sg.Window('Window Title', layout)
-# # Event Loop to process "events" and get the "values" of the inputs
-# while True:
-#     event, values = window.read()
-#     if event in (None, 'Cancel'):  # if user closes window or clicks cancel
-#         break
-#     print('You entered ', values[0])
-
-# window.close()
-
+# # Enter into eventloop <- this will keep
+# # running your application, until you exit
+# tk.mainloop()
 
 db = PostgresqlDatabase('flashcards', user='postgres', password='',
                         host='localhost', port=5432)
