@@ -51,7 +51,15 @@ def menu():
         card = Card(question=question, answer=answer)
         card.save()
         print(f"{card.question} and {card.answer}")
-        question = input("Do you want to add more:y/n ")
+        question = input("Do you want to go to menu :y/n ")
+        if question == 'y':
+            menu()
+    if a == 'D':
+        card = Card.get(Card.id == input(
+            "what question do you want to delete? "))
+        card.delete_instance()
+        card.save()
+        question = input("Do you want to go to menu :y/n ")
         if question == 'y':
             menu()
 
@@ -64,16 +72,20 @@ def viewAllCards():
 def game():
     correct = 0
     incorrect = 0
-    for card in Card.select():
-        if input(f"{card.question}\n") == card.answer:
-            correct += 1
-            print(f"Amount of correct: {correct}")
+    a = int(input("How Many Cards Do You want from your deck? "))
 
-        else:
-            incorrect += 1
-            print(f"Amount of incorrect: {incorrect}")
-            if input("do you want to see the back y/n") == 'y':
-                print(f"answer is {card.answer}")
+    for card in Card.select():
+        if a > 0:
+            a -= 1
+            if input(f"{card.question}\n") == card.answer:
+                correct += 1
+                print(f"Amount of correct: {correct}")
+
+            else:
+                incorrect += 1
+                print(f"Amount of incorrect: {incorrect}")
+                if input("do you want to see the back y/n") == 'y':
+                    print(f"answer is {card.answer}")
 
 
 db.create_tables([Card])
