@@ -39,7 +39,7 @@ class Card(BaseModel):
 
 
 def menu():
-    a = input("C:Create\nV: View\n G: Game\n")
+    a = input("C:Create\nV: View\nG: Game\nD: Delete\n")
     if(a == 'V'):
         viewAllCards()
     if a == 'G':
@@ -56,7 +56,7 @@ def menu():
             menu()
     if a == 'D':
         card = Card.get(Card.id == input(
-            "what question do you want to delete? "))
+            "what question do you want to delete? Must use ID number "))
         card.delete_instance()
         card.save()
         question = input("Do you want to go to menu :y/n ")
