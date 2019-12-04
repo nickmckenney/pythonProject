@@ -1,4 +1,4 @@
-# pythonProject - FLASH CARDS
+#  - FLASH CARDS - 
 
 # Description
 
@@ -25,4 +25,4 @@ https://github.com/nickmckenney/pythonProject.git
 PSQL
 Python3
 ```
-![Example Picture](Screen Shot 2019-12-04 at 5.24.09 PM.png)
+
